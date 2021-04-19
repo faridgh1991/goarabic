@@ -1,5 +1,5 @@
-// Package goarabic contains utility functions for working with Arabic strings.
-package goarabic
+// Package gofarsi contains utility functions for working with Farsi strings.
+package gofarsi
 
 // Reverse returns its argument string reversed rune-wise left to right.
 func Reverse(s string) string {
@@ -11,7 +11,7 @@ func Reverse(s string) string {
 }
 
 // SmartLength returns the length of the given string
-// without considering the Arabic Vowels (Tashkeel).
+// without considering the Farsi Vowels (Tashkeel).
 func SmartLength(s *string) int {
 	// len() use int as return value, so we'd better follow for compatibility
 	length := 0
@@ -26,7 +26,7 @@ func SmartLength(s *string) int {
 	return length
 }
 
-// RemoveTashkeel returns its argument as rune-wise string without Arabic vowels (Tashkeel).
+// RemoveTashkeel returns its argument as rune-wise string without Farsi vowels (Tashkeel).
 func RemoveTashkeel(s string) string {
 	// var r []rune
 	// the capcity of the slice wont be greater than the length of the string itself
@@ -43,7 +43,7 @@ func RemoveTashkeel(s string) string {
 	return string(r)
 }
 
-// RemoveTatweel returns its argument as rune-wise string without Arabic Tatweel character.
+// RemoveTatweel returns its argument as rune-wise string without Farsi Tatweel character.
 func RemoveTatweel(s string) string {
 	r := make([]rune, 0, len(s))
 
@@ -59,27 +59,27 @@ func RemoveTatweel(s string) string {
 
 func getCharGlyph(previousChar, currentChar, nextChar rune) rune {
 	glyph := currentChar
-	previousIn := false // in the Arabic Alphabet or not
-	nextIn := false     // in the Arabic Alphabet or not
+	previousIn := false // in the Farsi Alphabet or not
+	nextIn := false     // in the Farsi Alphabet or not
 
 	for _, s := range alphabet {
-		if s.equals(previousChar) { // previousChar in the Arabic Alphabet ?
+		if s.equals(previousChar) { // previousChar in the Farsi Alphabet ?
 			previousIn = true
 		}
 
-		if s.equals(nextChar) { // nextChar in the Arabic Alphabet ?
+		if s.equals(nextChar) { // nextChar in the Farsi Alphabet ?
 			nextIn = true
 		}
 	}
 
 	for _, s := range alphabet {
 
-		if !s.equals(currentChar) { // currentChar in the Arabic Alphabet ?
+		if !s.equals(currentChar) { // currentChar in the Farsi Alphabet ?
 			continue
 		}
 
-		if previousIn && nextIn { // between two Arabic Alphabet, return the medium glyph
-			for s, _ := range beggining_after {
+		if previousIn && nextIn { // between two Farsi Alphabet, return the medium glyph
+			for s := range beggining_after {
 				if s.equals(previousChar) {
 					return getHarf(currentChar).Beggining
 				}
@@ -88,12 +88,12 @@ func getCharGlyph(previousChar, currentChar, nextChar rune) rune {
 			return getHarf(currentChar).Medium
 		}
 
-		if nextIn { // beginning (because the previous is not in the Arabic Alphabet)
+		if nextIn { // beginning (because the previous is not in the Farsi Alphabet)
 			return getHarf(currentChar).Beggining
 		}
 
-		if previousIn { // final (because the next is not in the Arabic Alphabet)
-			for s, _ := range beggining_after {
+		if previousIn { // final (because the next is not in the Farsi Alphabet)
+			for s := range beggining_after {
 				if s.equals(previousChar) {
 					return getHarf(currentChar).Isolated
 				}
@@ -109,7 +109,7 @@ func getCharGlyph(previousChar, currentChar, nextChar rune) rune {
 	return glyph
 }
 
-// equals() return if true if the given Arabic char is alphabetically equal to
+// equals() return if true if the given Farsi char is alphabetically equal to
 // the current Harf regardless its shape (Glyph)
 func (c *Harf) equals(char rune) bool {
 	switch char {
@@ -128,7 +128,7 @@ func (c *Harf) equals(char rune) bool {
 	}
 }
 
-// getHarf gets the correspondent Harf for the given Arabic char
+// getHarf gets the correspondent Harf for the given Farsi char
 func getHarf(char rune) Harf {
 	for _, s := range alphabet {
 		if s.equals(char) {
@@ -139,10 +139,10 @@ func getHarf(char rune) Harf {
 	return Harf{Unicode: char, Isolated: char, Medium: char, Final: char}
 }
 
-//RemoveAllNonAlphabetChars deletes all characters which are not included in Arabic Alphabet
-func RemoveAllNonArabicChars(text string) string {
+//RemoveAllNonFarsiChars deletes all characters which are not included in Farsi Alphabet
+func RemoveAllNonFarsiChars(text string) string {
 	runes := []rune(text)
-	newText := []rune{}
+	var newText []rune
 	for _, current := range runes {
 		inAlphabet := false
 		for _, s := range alphabet {
@@ -190,7 +190,7 @@ func ToGlyph(text string) string {
 	return string(newText)
 }
 
-// RemoveTashkeel returns its argument as rune-wise string without Arabic vowels (Tashkeel).
+// RemoveTashkeel returns its argument as rune-wise string without Farsi vowels (Tashkeel).
 /*
 func RemoveTashkeelExtended(s string) string {
 	r := []rune(s)

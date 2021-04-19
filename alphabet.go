@@ -1,23 +1,23 @@
-package goarabic
+package gofarsi
 
-// Harf holds the Arabic character with its different representation forms (glyphs).
+// Harf holds the Farsi character with its different representation forms (glyphs).
 type Harf struct {
 	Unicode, Isolated, Beggining, Medium, Final rune
 }
 
 // Vowels (Tashkeel) characters.
 var (
-	FATHA    rune = '\u064e'
-	FATHATAN rune = '\u064b'
-	DAMMA    rune = '\u064f'
-	DAMMATAN rune = '\u064c'
-	KASRA    rune = '\u0650'
-	KASRATAN rune = '\u064d'
-	SHADDA   rune = '\u0651'
-	SUKUN    rune = '\u0652'
+	FATHA    = '\u064e'
+	FATHATAN = '\u064b'
+	DAMMA    = '\u064f'
+	DAMMATAN = '\u064c'
+	KASRA    = '\u0650'
+	KASRATAN = '\u064d'
+	SHADDA   = '\u0651'
+	SUKUN    = '\u0652'
 )
 
-// Arabic Alphabet using the new Harf type.
+// Farsi Alphabet using the new Harf type.
 var (
 	ALEF_HAMZA_ABOVE = Harf{ // أ
 		Unicode:   '\u0623',
@@ -335,6 +335,41 @@ var (
 		Beggining: '\ufef7',
 		Medium:    '\ufef8',
 		Final:     '\ufef8'}
+
+	FA_YEH = Harf{ // ی
+		Unicode:   '\u06cc',
+		Isolated:  '\ufbfc',
+		Beggining: '\ufbfe',
+		Medium:    '\ufbff',
+		Final:     '\ufbfd'}
+
+	FA_GAF = Harf{ // گ
+		Unicode:   '\u06af',
+		Isolated:  '\ufb92',
+		Beggining: '\ufb94',
+		Medium:    '\ufb95',
+		Final:     '\ufb93'}
+
+	FA_TCHEH = Harf{ // چ
+		Unicode:   '\u0686',
+		Isolated:  '\ufb7a',
+		Beggining: '\ufb7c',
+		Medium:    '\ufb7d',
+		Final:     '\ufb7b'}
+
+	FA_PEH = Harf{ // پ
+		Unicode:   '\u067e',
+		Isolated:  '\ufb56',
+		Beggining: '\ufb58',
+		Medium:    '\ufb59',
+		Final:     '\ufb57'}
+
+	FA_JEH = Harf{ // ژ
+		Unicode:   '\u0698',
+		Isolated:  '\ufb8a',
+		Beggining: '\u0698',
+		Medium:    '\ufb8b',
+		Final:     '\ufb8b'}
 )
 
 var alphabet = []Harf{
@@ -383,6 +418,11 @@ var alphabet = []Harf{
 	TATWEEL,
 	LAM_ALEF,
 	LAM_ALEF_HAMZA_ABOVE,
+	FA_YEH,
+	FA_GAF,
+	FA_TCHEH,
+	FA_PEH,
+	FA_JEH,
 }
 
 // use map for faster lookups.

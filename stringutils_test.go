@@ -1,5 +1,5 @@
-// Package goarabic contains utility functions for working with strings.
-package goarabic
+// Package gofarsi contains utility functions for working with strings.
+package gofarsi
 
 import "testing"
 
@@ -92,7 +92,7 @@ func TestRemoveTatweel(t *testing.T) {
 	}
 }
 
-func TestRemoveAllNonArabicChars(t *testing.T) {
+func TestRemoveAllNonFarsiChars(t *testing.T) {
 	cases := []struct {
 		in, want string
 	}{
@@ -101,9 +101,9 @@ func TestRemoveAllNonArabicChars(t *testing.T) {
 		{"", ""},
 	}
 	for _, c := range cases {
-		got := RemoveAllNonArabicChars(c.in)
+		got := RemoveAllNonFarsiChars(c.in)
 		if got != c.want {
-			t.Errorf("RemoveAllNonArabicChars(%q) == %q, want %q", c.in, got, c.want)
+			t.Errorf("RemoveAllNonFarsiChars(%q) == %q, want %q", c.in, got, c.want)
 		}
 	}
 }
