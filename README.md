@@ -1,7 +1,7 @@
-
 # GoFarsi
 [![Build Status](https://travis-ci.org/01walid/gofarsi.svg)](https://travis-ci.org/faridgh1991/gofarsi)
 [![GoDoc](https://godoc.org/github.com/faridgh1991/gofarsi?status.svg)](https://godoc.org/github.com/faridgh1991/gofarsi)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffaridgh1991%2Fgofarsi.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffaridgh1991%2Fgofarsi?ref=badge_shield)
 
 A Go Lang package for dealing with Farsi text.
 
@@ -53,3 +53,6 @@ Contributions are greatly appreciated. Please fork this repository, make your ch
 This a [SemVer](http://semver.org/)sioned package.
 ## License
 MIT License.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffaridgh1991%2Fgofarsi.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffaridgh1991%2Fgofarsi?ref=badge_large)
